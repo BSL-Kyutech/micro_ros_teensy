@@ -1,4 +1,4 @@
-# micro-ROS for Teensy with TeensyThreads
+# micro-ROS on TeensyThreads for Teensy
 
 A micro-ROS code using multithreading for Teensy 4.1.   
 The multithreading function is implemented via "TeensyThreads", a official support library of Teensy, similar to "FreeRTOS".  
