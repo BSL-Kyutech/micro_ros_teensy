@@ -21,6 +21,7 @@ rcl_node_t node;
 rcl_timer_t timer;
 
 const int LED_PIN = 13;
+#define FREQ 120
 
 #define RCCHECK(fn) { rcl_ret_t temp_rc = fn; if((temp_rc != RCL_RET_OK)){error_loop();}}
 #define RCSOFTCHECK(fn) { rcl_ret_t temp_rc = fn; if((temp_rc != RCL_RET_OK)){}}
@@ -49,7 +50,7 @@ void setup() {
   // ros2 node setup
   ros_setup();
 
-  // initialize semaphore
+  // set ros2 thread
   threads.addThread(ros_spin_task);
 }
 
@@ -77,7 +78,7 @@ void ros_setup(){
 
   // create timer,
   debug_blink(6);
-  const unsigned int timer_timeout = 1000;
+  const unsigned int timer_timeout = 1000/FREQ;
   RCCHECK(rclc_timer_init_default(
     &timer,
     &support,
